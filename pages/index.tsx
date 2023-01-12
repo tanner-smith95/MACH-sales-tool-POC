@@ -3,6 +3,8 @@ import Head from "next/head";
 import { CanvasClient } from "@uniformdev/canvas";
 import { Composition, Slot } from "@uniformdev/canvas-react";
 
+import { CTA, CustomizationWindow } from "../components";
+
 type GenericObject = {
   [key: string]: any;
 };
@@ -23,36 +25,6 @@ export default function Home({ composition }: GenericObject) {
         <Composition
           data={composition}
           resolveRenderer={({ type }) => {
-            const CTA = ({
-              title,
-              subtitle,
-              linkURL,
-              linkTitle,
-            }: GenericObject) => {
-              return (
-                <div>
-                  <h2>{title}</h2>
-                  <h3>{subtitle}</h3>
-
-                  <a href={linkURL}>{linkTitle}</a>
-                </div>
-              );
-            };
-
-            const CustomizationWindow = ({
-              title,
-              framework,
-            }: GenericObject) => {
-              return (
-                <div>
-                  <hr />
-                  <h2>{title}</h2>
-                  <span>{framework}</span>
-                  <hr />
-                </div>
-              );
-            };
-
             switch (type) {
               case "callToAction":
                 return CTA;
